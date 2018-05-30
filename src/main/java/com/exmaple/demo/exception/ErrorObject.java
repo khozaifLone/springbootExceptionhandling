@@ -12,7 +12,6 @@ public class ErrorObject {
 	   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	   private LocalDateTime timestamp;
 	   private String message;
-	   private String debugMessage;
 
 	   private ErrorObject() {
 	       timestamp = LocalDateTime.now();
@@ -27,14 +26,12 @@ public class ErrorObject {
 	       this();
 	       this.status = status;
 	       this.message = "Unexpected error";
-	       this.debugMessage = ex.getLocalizedMessage();
 	   }
 
 	   public ErrorObject(HttpStatus status, String message, Throwable ex) {
 	       this();
 	       this.status = status;
 	       this.message = message;
-	       this.debugMessage = ex.getLocalizedMessage();
 	   }
 
 	public HttpStatus getStatus() {
@@ -59,14 +56,6 @@ public class ErrorObject {
 
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	public String getDebugMessage() {
-		return debugMessage;
-	}
-
-	public void setDebugMessage(String debugMessage) {
-		this.debugMessage = debugMessage;
 	}
 	  
 	}
