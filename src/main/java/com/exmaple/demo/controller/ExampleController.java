@@ -15,7 +15,7 @@ public class ExampleController {
 
 	@RequestMapping(value = "/test1/{name}", method = RequestMethod.GET)
 	public String getTestString(@PathVariable("name") String name) {
-		if (!name.matches(".*[a-z].*")) {
+		if (!name.matches(".*[A-Za-z].*")) {
 			ErrorObject apiError = new ErrorObject(HttpStatus.BAD_REQUEST);
 			throw new InvalidInputException("Please pass the valid name.", apiError);
 		}
